@@ -1,29 +1,20 @@
 # Toronto Waste Lookup
 A web app that users can search for waste items using the Toronto Waste Wizard database, and save frequently used ones.
 
-## `npm start`
+## Deployed
+[Please find the app in action here:] (https://rosexw.github.io/TorontoWasteLookup/)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Search for any item in the Toronto Waste Wizard Lookup table
+Use the search function to find where you should put the item. Press enter or select the search button to start the search. This performs an API call that searches data from [Waste Wizard Lookup data (JSON)](https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#5ed40494-a290-7807-d5da-09ab6a56fca2). The results display the disposal bin category and description.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Clear the results
+When the search input field is cleared, the list of results are cleared.
 
-### `npm test`
+## Favourite any result
+The favourited result has a green star next to it and is added into the favourites list.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Unfavourite any result
+This result is removed from the favourites list and now has a grey star next to it.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Screenshot
+![screenshot](https://github.com/rosexw/TorontoWasteLookup/blob/master/torontowastelookup.png)
