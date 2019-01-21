@@ -3,11 +3,13 @@ import './App.css';
 import WasteItem from './WasteItem.js';
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {searchTerm: ''};
+    this.state = {
+      searchTerm: '',
+      faves: [],
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,14 +36,37 @@ class App extends Component {
       });
     event.preventDefault();
   }
+
+  isFave(wasteItem) {
+    return this.state.faves.find(fave => fave.title === wasteItem.title);
+  }
+
+  toggleFave(wasteItem) {
+    if (this.isFave(wasteItem)){
+      this.setState((state) => ({
+        faves: state.faves.filter(fave => fave.title !== wasteItem.title),
+      }));
+    } else {
+      this.setState((state) => ({
+        faves: [...state.faves, {...wasteItem}],
+      }));
+    }
+  }
+
   render() {
     const searching = this.state.searching && <div className="searching">Searching...</div>;
-    const results = this.state.results && !this.state.searching && this.state.results.map(result => {
-      return <WasteItem title={result.title} body={result.body}/>;
+
+    const results = this.state.results && !this.state.searching &&
+      this.state.results.map(result => {
+        return <WasteItem key={result.title} title={result.title} body={result.body} toggleFave={() => this.toggleFave(result)} isFave={this.isFave(result)}/>;
+      });
+
+    const faves = this.state.faves.map(fave => {
+      return <WasteItem key={fave.title} title={fave.title} body={fave.body} toggleFave={() => this.toggleFave(fave)} isFave={this.isFave(fave)}/>;
     });
+
     return (
       <div className="App">
-      <link rel="icon" type="image/png" href="https://www.toronto.ca/wp-content/themes/cot/img/favicon-32x32.png" size="32x32" />
         <header className="mainHeader">Toronto Waste Lookup</header>
         <div className="search-container">
           <form className="search-form" onSubmit={this.handleSubmit}>
@@ -49,10 +74,20 @@ class App extends Component {
             <button type="submit"><i className="fa fa-search fa-sm fa-flip-horizontal"></i></button>
           </form>
         </div>
+        {searching}
         <table className="results">
-          {searching}
-          {results}
+          <tbody>
+            {results}
+          </tbody>
         </table>
+        <div className="faves">
+          <h2>Favourites</h2>
+          <table className="results">
+            <tbody>
+              {faves}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

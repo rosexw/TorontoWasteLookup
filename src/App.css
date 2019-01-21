@@ -35,6 +35,50 @@
   border-radius: 5%;
 }
 
+.searching {
+  padding: 0 20px;
+}
+
 .results {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.WasteItem-row {
+  vertical-align: top;
+}
+
+.WasteItem-row td {
+  padding-bottom: 30px;
+}
+
+.WasteItem-body {
+  width: 60%;
+}
+
+.WasteItem-body ul {
+  margin: 0;
+}
+
+.faves {
+  background-color: #f8fefa;
+  width: 100%;
+}
+
+.faves h2 {
   padding: 20px;
+  color: #62a072;
+}
+
+.fav-button {
+  border: none;
+  background: inherit;
+}
+
+.isFave {
+  color: #599460;
+}
+
+.isNotFave {
+  color: #aaaaaa;
 }
